@@ -1,0 +1,41 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthGuardian - AI Symptom Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #e8f5e9; color: #333; text-align: center; padding: 20px; }
+        h1 { color: #388e3c; }
+        form { margin: 20px 0; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        label { display: block; margin: 10px 0; }
+        button { padding: 10px 20px; background-color: #388e3c; color: white; border: none; cursor: pointer; border-radius: 4px; }
+        button:hover { background-color: #2e7d32; }
+        .result { margin-top: 20px; font-weight: bold; color: #d32f2f; }
+    </style>
+</head>
+<body>
+    <h1>HealthGuardian</h1>
+    <p>Enter your symptoms and get an AI-powered diagnosis.</p>
+    <form method="POST">
+        <label><input type="checkbox" name="symptoms" value="headache"> Headache</label>
+        <label><input type="checkbox" name="symptoms" value="fever"> Fever</label>
+        <label><input type="checkbox" name="symptoms" value="nausea"> Nausea</label>
+        <label><input type="checkbox" name="symptoms" value="cough"> Cough</label>
+        <label><input type="checkbox" name="symptoms" value="fatigue"> Fatigue</label>
+        <label><input type="checkbox" name="symptoms" value="sore throat"> Sore Throat</label>
+        <label><input type="checkbox" name="symptoms" value="muscle pain"> Muscle Pain</label>
+        <label><input type="checkbox" name="symptoms" value="shortness of breath"> Shortness of Breath</label>
+        <button type="submit">Check Symptoms</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <p>Possible Condition: {{ prediction }}</p>
+    </div>
+    {% endif %}
+
+    <p><a href="{{ url_for('history') }}">View Symptom History</a> | <a href="{{ url_for('feedback') }}">Give Feedback</a></p>
+</body>
+</html>

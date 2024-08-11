@@ -1,0 +1,32 @@
+<!-- templates/history.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthGuardian - Symptom History</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #e8f5e9; color: #333; text-align: center; padding: 20px; }
+        h1 { color: #388e3c; }
+        table { margin: 20px auto; width: 80%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ccc; }
+        th { background-color: #388e3c; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Symptom History</h1>
+    <table>
+        <tr>
+            <th>Symptoms</th>
+            <th>Predicted Condition</th>
+        </tr>
+        {% for entry in history %}
+        <tr>
+            <td>{{ entry.symptoms }}</td>
+            <td>{{ entry.prediction }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+</body>
+</html>
